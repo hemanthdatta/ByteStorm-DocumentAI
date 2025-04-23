@@ -8,7 +8,7 @@ python-pptx==1.0.2
 Pillow==11.2.1
 google-generativeai==0.8.5
 fastapi==0.115.12
-uvicorn==0.34.2
+uvicorn[standard]
 pydantic==2.11.3
 python-multipart==0.0.20
 langchain==0.3.24
