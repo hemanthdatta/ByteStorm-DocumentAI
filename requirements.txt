@@ -13,7 +13,7 @@ pydantic==2.11.3
 python-multipart==0.0.20
 langchain==0.3.24
 langchain-experimental==0.3.4
-langchain-mistralai==0.0.7
+langchain-mistralai==0.2.10
 langgraph==0.0.23
 beautifulsoup4==4.12.3
 numpy==2.2.5
