@@ -24,7 +24,7 @@ Chunk = Dict[str, Any]
 # Constants
 mistral_api_key = 'VrAMhIHO61FjHTAYeibtLmla52bWnorV'
 DEFAULT_CHUNK_SIZE = 500  # Target number of words per chunk
-MAX_TOKENS_BEFORE_SECTION_SPLIT = 5000  # Max tokens before splitting by section
+MAX_TOKENS_BEFORE_SECTION_SPLIT = 500000  # Max tokens before splitting by section
 URL_REGEX = r'https?://(?:[-\w.]|(?:%[\da-fA-F]{2}))+'
 MD_URL_REGEX = r'<<(https?://(?:[-\w.]|(?:%[\da-fA-F]{2}))+)>>'  # Format: <<url>>
 SIMPLIFIED_URL = r'<<.*?>>'
@@ -400,7 +400,7 @@ class FaissEmbedder:
                     print(f"Embedding attempt {attempt+1} failed: {error_message}")
                     
                     # If rate limited, increase delay with exponential backoff
-                    if "429" in error_message or "rate limit" in error_message.lower():
+                    if "429" or "400" in error_message or "rate limit" in error_message.lower():
                         # Exponential backoff: 2^attempt seconds
                         retry_delay = min(60, 2 ** (attempt + 2))  # Max 60 second delay
                         batch_delay = min(60, batch_delay * 2)  # Double the delay between batches
